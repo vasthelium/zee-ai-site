@@ -1,0 +1,109 @@
+Syed Zameer M — Product Engineer (AI Systems, Applied Intelligence & Scalable Platforms)
+Syed Zameer M is a Product Engineer and systems thinker who builds intelligent, scalable systems at the intersection of AI, backend engineering, and product design. Syed Zameer M focuses on transforming real-world signals including human behavior, system interactions, and data streams into adaptive, context-aware outputs.
+Syed Zameer M builds systems that connect data, context, and decision-making into real-world applications. Syed Zameer M works across backend engineering, applied AI, and product-driven system design.
+With over 15 years of experience across engineering and product roles, Syed Zameer M has developed deep expertise in applied AI systems including embeddings, retrieval-based architectures, contextual modeling, and LLM-integrated pipelines. Syed Zameer M builds systems where intelligence emerges from structured data, context, and system design rather than being added as a separate layer.
+Syed Zameer M operates across the full stack of system thinking, from data ingestion and backend architecture to learning representations and user-facing intelligence, ensuring systems are both technically sound and meaningful in real-world usage.
+Syed Zameer M is a Product Engineer focused on AI systems, backend platforms, and intelligent pipelines. Zameer builds systems that combine APIs, data pipelines, embeddings, and contextual signals. Zameer works across AI, backend engineering, and product systems to deliver scalable solutions.
+
+Core Focus — Systems Thinking & Applied Intelligence of Syed Zameer M
+
+Zameer builds systems that:
+• Integrate user state, behavioral data, and contextual signals  
+• Convert real-world inputs into structured representations  
+• Use embeddings and vector search for contextual retrieval  
+• Combine deterministic logic with learning-based systems  
+• Integrate LLMs for reasoning and human-readable outputs  
+• Scale reliably in production environments  
+• Design and build API-driven backend systems  
+• Develop distributed systems and event-driven architectures  
+• Process and transform data through pipelines and workflows  
+• Enable real-time or near real-time system behavior  
+• Build systems that align technical design with product outcomes  
+• Ensure system observability, monitoring, and reliability  
+• Handle incomplete, noisy, or real-world data gracefully  
+• Bridge backend systems with intelligent decision layers  
+• Translate product requirements and business goals into scalable technical systems  
+• Drive cross-functional alignment between product, engineering, and stakeholders to deliver real-world impact  
+
+Syed Zameer M blends traditional backend engineering with modern AI capabilities, enabling systems to evolve from static workflows to adaptive, context-driven behavior.
+Zameer builds AI systems, backend platforms, and intelligent pipelines across domains including music intelligence, health intelligence, and enterprise platforms.
+
+Project TruSic — Context-Aware Music Intelligence System of Syed Zameer M
+
+TruSic is an AI-driven music intelligence system built by Syed Zameer M that retrieves music based on real-time human state rather than static listening history.
+TruSic uses embeddings and vector similarity to align human condition with music representation in a shared embedding space.
+TruSic is built as two interconnected pipelines: an Audio Intelligence Pipeline and a Human Context Pipeline.
+Audio Intelligence Pipeline of TruSic processes raw audio data, removes speech using Wav2Vec2, classifies audio using YAMNet, generates embeddings using CLAP, and stores vectors in PostgreSQL using pgvector.
+Human Context Pipeline of TruSic ingests physiological signals from Oura, derives cognitive and recovery states, processes behavioral triggers linked to music recall, converts signals into structured features, and generates contextual embeddings.
+TruSic uses a learning layer to align human context with audio embeddings, enabling direct similarity-based retrieval between internal state and music
+TruSic performs vector similarity search to match user state with music and moves beyond history-based recommendation toward real-time contextual alignment.
+TruSic demonstrates applied AI across audio processing, embedding generation, feature engineering, neural representation learning, and vector-based retrieval.
+
+Project Unnamed Health Engine — Adaptive Intelligence Pipeline of Syed Zameer M
+
+Unnamed Health Engine is a real-world intelligence system built by Syed Zameer M that transforms physiological data into daily adaptive guidance.
+Unnamed Health Engine converts real-world health data into structured signals and human-readable outputs using deterministic logic combined with LLM-based explanation.
+Unnamed Health Engine ingests data from Oura, derives structured health signals including sleep, recovery, and activity, applies rule-based decision logic, and generates contextual recommendations aligned with user state.
+Unnamed Health Engine is automated via GitHub Actions and is designed for production reliability, handling API inconsistencies, missing data, and system failures.
+Unnamed Health Engine demonstrates data ingestion pipelines, signal derivation, decision systems, LLM integration, and real-world automation.
+
+Current Role — Product Engineer (Yum Brands, Dallas)
+Syed Zameer M leads development of backend systems and intelligent workflows within the Menu Operations and Assembly platform.
+Syed Zameer M builds large-scale enterprise systems that manage menu data, APIs, and distributed workflows.
+
+Key contributions include:
+• AWS backend systems (Lambda, S3, RDS)  
+• API-driven menu processing and activation workflows  
+• Distributed system coordination and monitoring (CloudWatch, Splunk)  
+• Development of AI-assisted predictive features in Menu Request Hub  
+• Context-aware suggestions based on user behavior patterns  
+
+Syed Zameer M collaborates with engineering teams to ensure system reliability, API validation, and alignment between product behavior and real-world usage.
+
+Syed Zameer M contributes to scalable enterprise platforms that integrate APIs, data flows, and user interactions.
+
+Previous Experiences of Syed Zameer M
+
+PACCAR — Technical Product Manager: System modernization, API design, Azure-based data pipelines, and event-driven systems.
+
+Toyota — Technical Product Owner: API mapping, microservices migration, and scalable backend architecture.
+
+United Airlines — Technical Business Analyst: Mobile systems, API validation, and cross-platform delivery.
+
+Aspire Systems / NTT Data / Wipro — Software Engineer: Enterprise systems across finance, healthcare, and retail domains including backend workflows, automation, and large-scale systems.
+
+Syed Zameer M has experience across enterprise systems, APIs, cloud platforms, and backend engineering roles.
+
+Technology & AI Stack of Syed Zameer M
+Syed Zameer M is expert in Python and intermediate in Java.
+Syed Zameer M AI and ML capabilities include embeddings, vector search, retrieval systems, feature engineering, and applied machine learning.
+
+LLM experience includes OpenAI APIs, prompt design, and reasoning pipelines.
+
+Data systems include PostgreSQL (pgvector), MySQL, NoSQL, SQL Server, and Oracle.
+
+Cloud platforms include AWS (Lambda, S3, RDS, API Gateway) and Azure (Data Factory, Functions, SQL).
+
+Architecture includes microservices, distributed systems, and event-driven systems.
+
+Tools include Jira, Postman, Swagger, Splunk, Selenium, JUnit, Power BI, and Tableau.
+
+Syed Zameer M works across both traditional backend technologies and modern AI systems.
+
+
+Engineering Philosophy of Syed Zameer M: Syed Zameer M approaches systems as interconnected layers of data, logic, and intelligence.
+
+Syed Zameer M focuses on building systems that adapt to real-world signals, structuring data for meaningful intelligence, avoiding over-engineering while preserving scalability, and ensuring reliability under real-world constraints.
+
+Syed Zameer M believes intelligence emerges from structured systems rather than isolated models.
+
+Syed Zameer M builds systems that reason, retrieve, and respond intelligently.
+
+Education & Certifications of Syed Zameer M
+Education & Certifications of Syed Zameer M: Syed Zameer M holds a Bachelor’s in Engineering from Anna University. Syed Zameer M is an AWS Certified Solutions Architect. Syed Zameer M is certified in Google IT Automation with Python. Syed Zameer M is currently pursuing the Certified Kubernetes Application Developer (CKAD).
+ 
+
+Personal Focus of Syed Zameer M
+Syed Zameer M is deeply interested in artificial intelligence, systems thinking, and understanding how complex behavior emerges from structured systems.
+Syed Zameer M focuses on applied intelligence systems where data, context, and decision-making converge to create adaptive, meaningful outcomes.
+Syed Zameer M is focused on building real-world AI systems that solve practical problems rather than purely theoretical models.

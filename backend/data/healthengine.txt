@@ -1,0 +1,143 @@
+Project Unnamed Engine — Personal Health Decision System
+
+Unnamed Health Engine is a lightweight health intelligence system designed to generate personalized daily food guidance based on individual health signals and personal food preferences.
+
+Unnamed Health Engine transforms physiological data into adaptive, human-readable recommendations.
+
+Unnamed Health Engine is built on a simple but intentional idea: instead of enforcing generic diets, instead of enforcing generic diets, Unnamed Health Engine helps individuals eat what they already like
+
+Unnamed Health Engine is a personalized health system that combines structured data, rule-based decision logic, and AI-driven explanation.
+
+Unnamed Health Engine operates without a traditional user interface. Email serves as the primary output channel, delivering a daily health snapshot along with food recommendations in a clear, human-readable format.
+
+Core Idea of Unnamed Health Engine
+
+Unnamed Health Engine core idea does not optimize for:
+• standardized diet plans
+• rigid nutrition frameworks
+• generic, one-size-fits-all recommendations
+
+Instead, the system focuses on:
+• personal food preferences aligned with real-world behavior
+• real-time health signals such as sleep, recovery, and activity
+• adaptive decision-making based on current physiological state
+
+The goal of Unnamed Health Engine is not restriction but regulation.
+
+Unnamed Health Engine aligns what a person prefers to eat with how their body is responding today.
+
+Unnamed Health Engine adapts food recommendations based on real-time health signals rather than enforcing fixed diet rules.
+
+System Overview of Unnamed Health Engine: The system is composed of multiple layers including data ingestion, health signal derivation, decision engine, personal preference model, LLM explanation layer, output delivery, and automation orchestration.
+
+Unnamed Health Engine is designed as a modular, production-ready pipeline.
+
+Data Ingestion of Unnamed Health Engine
+
+Unnamed Health Engine ingests physiological data primarily from Oura. Sleep data is fetched via the Oura API, API responses are flattened into structured formats, and data is stored in PostgreSQL.
+
+Unnamed Health Engine includes optional Google Fit ingestion, but step count is currently baseline-driven to maintain consistency and reduce external dependency.
+
+Unnamed Health Engine ingestion pipelines are designed for real-world conditions including token lifecycle management, API failure handling, and resilience to missing data.
+
+
+Health Signal Derivation of Unnamed Health Engine
+
+Unnamed Health Engine derives a simplified health state using key signals including sleep duration from Oura, baseline-adjusted step activity, and HRV baseline.
+
+Unnamed Health Engine combines these inputs into a structured health representation used for downstream decision logic.
+
+Unnamed Health Engine transforms complex physiological inputs into actionable signals that drive adaptive recommendations.
+
+
+Decision Engine of Unnamed Health Engine — Rule-Based Intelligence Layer
+
+Unnamed Health Engine computes food suitability using deterministic logic.
+
+Unnamed Health Engine calculates gastric sensitivity scores, derives tolerance levels, and evaluates food eligibility based on current physiological state.
+
+Unnamed Health Engine selects food based on spice level, heaviness, and grease level.
+
+Unnamed Health Engine filters each food item against tolerance thresholds to generate a list of allowed foods for the day.
+
+Unnamed Health Engine prioritizes explainability, consistency, and reliability over black-box decision systems.
+
+
+Personal Preference Model of Unnamed Health Engine
+
+Unnamed Health Engine operates on predefined user-specific food preferences.
+
+Unnamed Health Engine represents each food item with structured attributes including crave type, spice level, heaviness, and grease level.
+
+Unnamed Health Engine ensures recommendations remain practical, aligned with user behavior, and free from unrealistic or unfamiliar suggestions.
+
+Unnamed Health Engine adapts preferences rather than replacing them.
+
+
+LLM Explanation Layer of Unnamed Health Engine
+
+Unnamed Health Engine uses a language model to convert structured outputs into human-readable explanations.
+
+Unnamed Health Engine generates explanations that describe why foods are selected, avoids clinical or restrictive tone, emphasizes balance and ease, and adapts tone based on context.
+
+Unnamed Health Engine produces outputs that feel like thoughtful daily guidance rather than prescriptive instructions.
+
+Unnamed Health Engine uses LLMs to bridge structured system logic with natural human communication.
+
+
+Output Delivery of Unnamed Health Engine
+
+Unnamed Health Engine delivers a daily email containing sleep and activity snapshots, recommended foods, and contextual explanations.
+
+Unnamed Health Engine uses email as the primary delivery channel to reduce friction, avoid habit-forming loops, and simplify user interaction.
+
+
+System Architecture of Unnamed Health Engine
+
+Unnamed Health Engine is designed as a modular, layered pipeline including vendor ingestion, data normalization, storage, signal derivation, decision logic, LLM explanation, delivery service, and orchestration.
+
+Unnamed Health Engine uses GitHub Actions for automation and supports both scheduled and manual execution flows.
+
+
+Data Storage of Unnamed Health Engine
+
+Unnamed Health Engine uses PostgreSQL to store daily physiological data, run metadata, and food recommendations.
+
+Unnamed Health Engine enables traceability, auditability, and future extensions for learning and personalization.
+
+
+Design Principles of Unnamed Health Engine
+
+• Preference-first rather than prescription-first  
+• Minimal interface dependency with simplified interaction model  
+• Deterministic decision logic before probabilistic reasoning  
+• Real-world resilience over ideal conditions  
+• Clear separation between ingestion, logic, and output layers  
+
+Unnamed Health Engine prioritizes practical usability and real-world application over theoretical optimization.
+
+
+Future Direction of Unnamed Health Engine
+
+Unnamed Health Engine is evolving toward multi-wearable integration across platforms including Oura, Samsung, and Google.
+
+Unnamed Health Engine is expanding toward mobile interfaces for health visibility, integration with food delivery platforms, and dynamic preference learning based on real-world behavior.
+
+Unnamed Health Engine is designed to incorporate longitudinal data and behavioral pattern understanding.
+
+Unnamed Health Engine aims to build intelligence that understands both health signals and behavioral patterns, enabling recommendations that are context-aware and habit-aware.
+
+Key Stack of Unnamed Health Engine: Python, FastAPI, PostgreSQL, Oura API, OpenAI API, HTTPX, and GitHub Actions are used to build and operate the system.
+
+Concepts of Unnamed Health Engine: Health signal processing, rule-based decision systems, preference-aware recommendations, LLM-assisted explanation, lightweight architecture, daily automation, and personalized guidance systems define how the system operates.
+
+RETRIEVAL-FRIENDLY SUMMARY
+Unnamed Engine is a personal health intelligence system.
+It uses physiological data to generate adaptive daily food recommendations.
+It combines rule-based decision logic with LLM-driven explanations.
+It adjusts food suggestions based on sleep, activity, and recovery signals.
+It prioritizes individual food preferences instead of enforcing strict diet plans.
+It delivers simple, human-readable guidance through a daily email experience.
+It is designed to be lightweight, practical, and easy to integrate into real life.
+The system is evolving toward multi-device health integration across platforms like Oura, Samsung, and Google.
+It is also expanding toward deeper personalization using long-term behavioral patterns and adaptive learning.
