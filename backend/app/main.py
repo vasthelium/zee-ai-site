@@ -3,6 +3,8 @@ from app.services.chat_services import chatservice
 from pydantic import BaseModel
 from contextlib import asynccontextmanager
 from app.global_cache import load_to_memory
+from app.services.match_service import matchservice
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -16,6 +18,10 @@ app = FastAPI(lifespan=lifespan)
 class ChatRequest(BaseModel):
     message: str
 
+class MatchRequest(BaseModel):
+    job_description: str
+
+
 @app.get("/")
 def root():
     return {"message": "Backend is running"}
@@ -27,6 +33,14 @@ async def sendchat(request: ChatRequest):
     callchat = chatservice(user_input)
 
     return callchat
+
+@app.post("/match")
+async def sendmatch(request: MatchRequest):
+    user_input = request.job_description
+
+    callmatch = matchservice(user_input)
+
+    return callmatch
 
 
 

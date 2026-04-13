@@ -69,5 +69,71 @@ Answer:
     return response.output_text
 
     
+def sendmatchtollm(job_description, neighbors):
 
+    question = job_description
+
+    context = []
+
+    for chunk in neighbors:
+        source = chunk["source"]
+        content = chunk["content"]
+
+        context.append(f"({source}) {content}")
+    
+    context = "\n".join(context)
+
+    prompt = f"""
+You are an expert evaluator assessing how well a candidate (Zameer) matches a given job description.
+
+You are given:
+- A job description
+- Context about the candidate’s experience, systems, and projects
+
+Your job:
+- Evaluate alignment between the job description and the candidate using ONLY the provided context
+- Do NOT assume anything outside the context
+- Be accurate, grounded, and professional
+
+OUTPUT FORMAT (STRICT):
+- Match Score: (1–10)
+- Summary: (2–3 concise lines explaining overall fit)
+- Key Strengths:
+  • bullet points from context that strongly match the role
+- Gaps / Missing Areas:
+  • bullet points where the job requires something not clearly present in context
+
+IMPORTANT BEHAVIOR:
+- Prefer extracting the BEST possible alignment from context rather than saying "no information"
+- If partial alignment exists, highlight it clearly
+- If something is missing, state it clearly (no guessing)
+- Use "Zameer" or "he" naturally
+
+STRICT RULES:
+- Do NOT hallucinate
+- Do NOT invent experience
+- Stay fully grounded in provided context
+
+---
+
+Context:
+{context}
+
+---
+
+Job Description:
+{question}
+
+---
+
+Evaluation:
+"""
+    
+    client = OpenAI()
+    response = client.responses.create(
+    model="gpt-4.1-mini",
+    input=prompt  
+    )
+
+    return response.output_text
     

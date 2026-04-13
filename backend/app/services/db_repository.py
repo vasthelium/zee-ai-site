@@ -12,15 +12,15 @@ def pgconnect():
     return connection_pool.getconn()
 
 def init_db(conn):
-    cur = conn.cursor()
-    cur.execute("""
-    CREATE EXTENSION IF NOT EXISTS vector
-                """)
+    with conn.cursor() as cur:
+        cur.execute(dedent("""
+        CREATE EXTENSION IF NOT EXISTS vector
+            """))
     #conn.commit()- not needed we do this service layer
 
 def create_text_embeddings_table(conn):
-    cur = conn.cursor()
-    cur.execute("""
+    with conn.cursor() as cur:
+        cur.execute(dedent("""
     CREATE TABLE IF NOT EXISTS text_embeddings 
         (
         id SERIAL PRIMARY KEY,
@@ -29,14 +29,14 @@ def create_text_embeddings_table(conn):
         content TEXT,
         embedding vector(1536)
         )
-                """)
+            """))
     print("Table Ensured")
     #conn.commit()- not needed we do this service layer
 
 def insert_text_embeddings(conn, record):
-    cur = conn.cursor()
-    cur.execute("""
-    INSERT INTO text_embeddings 
+    with conn.cursor() as cur:
+        cur.execute(dedent("""
+            INSERT INTO text_embeddings 
         (
         source,
         content,
@@ -44,24 +44,24 @@ def insert_text_embeddings(conn, record):
         )
         VALUES (%s, %s, %s)
         RETURNING id;        
-        """, (
+        """), (
             record["source"],
             record["content"],
             record["embedding"]
         ))
     #conn.commit()- not needed we do this service layer
-    embedding_id = cur.fetchone()[0]
+        embedding_id = cur.fetchone()[0]
     return embedding_id
 
 def read_stored_embeddingsdata(conn):
-    curs = conn.cursor()
-    curs.execute("""
+    with conn.cursor() as cur:
+            cur.execute(dedent("""
             SELECT source, content, embedding
             FROM text_embeddings
             ORDER BY created_at DESC
         """
-        )
-    row = curs.fetchall()
+        ))
+            row = cur.fetchall()
     if not row:
         return []
     embedding_list = []

@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type Message = {
   role: "user" | "assistant";
@@ -11,53 +10,40 @@ export default function Home() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-
   const chatRef = useRef<HTMLDivElement | null>(null);
+  const [showMatcher, setShowMatcher] = useState(false);
+  const [jobDesc, setJobDesc] = useState("");
+  const [matchResult, setMatchResult] = useState("");
+  const [loadingMatch, setLoadingMatch] = useState(false);
 
   useEffect(() => {
-  if (chatRef.current) {
-    chatRef.current.scrollTop = chatRef.current.scrollHeight;
-  }
-}, [messages]);
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const handleSend = async () => {
     if (!input.trim()) return;
 
     const userInput = input;
-    const userMessage: Message = { role: "user", content: userInput };
-
-    setMessages((prev) => [...prev, userMessage]);
+    setMessages((prev) => [...prev, { role: "user", content: userInput }]);
     setInput("");
 
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userInput }),
       });
 
-      if (!res.ok) throw new Error("API error");
-
       const data = await res.json();
-
-      // 👇 NEW TYPING EFFECT BLOCK
-      const fullText = data.reply;
-
-      // step 1: add empty assistant message
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: "" },
-      ]);
-
-      // step 2: type it out
       let current = "";
 
-      for (let i = 0; i < fullText.length; i++) {
-        current += fullText[i];
+      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
-        await new Promise((r) => setTimeout(r, 15)); // speed control
+      for (let i = 0; i < data.reply.length; i++) {
+        current += data.reply[i];
+        await new Promise((r) => setTimeout(r, 10));
 
         setMessages((prev) => {
           const updated = [...prev];
@@ -68,8 +54,7 @@ export default function Home() {
           return updated;
         });
       }
-
-    } catch (err) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: "Error reaching AI service" },
@@ -77,123 +62,336 @@ export default function Home() {
     }
   };
 
+  const handleMatch = async () => {
+    if (!jobDesc.trim()) return;
+
+    setLoadingMatch(true);
+    setMatchResult("");
+
+    try {
+      const res = await fetch("/api/matcher", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ job_description: jobDesc }),
+      });
+
+      const data = await res.json();
+
+      setMatchResult(typeof data === "string" ? data : JSON.stringify(data, null, 2));
+      setLoadingMatch(false);
+    } catch {
+      setMatchResult("Error generating match");
+    }
+
+    setLoadingMatch(false);
+  };
+
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black font-sans flex justify-center">
-      
-      <main className="w-full max-w-6xl grid grid-cols-3 gap-10 py-20 px-6">
+    <div className="min-h-screen bg-zinc-50 dark:bg-black font-sans px-6 py-16">
+      <div className="max-w-6xl mx-auto">
 
-        <div className="col-span-2">
+        {/* HEADER */}
+        <h1 className="text-5xl font-semibold">Syed Zameer (Zee)</h1>
 
-          <section>
-            <h1 className="text-4xl font-semibold text-black dark:text-zinc-50">
-              Zameer (Zee)
-            </h1>
+        <p className="mt-3 text-xl font-bold text-zinc-800 dark:text-zinc-200">
+          +1 972.441.2534 · techiezameer.m@gmail.com
+        </p>
 
-            <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-              AI Product Engineer • Python • Applied ML
-            </p>
+        <p className="mt-6 text-xl leading-8 text-zinc-700 dark:text-zinc-300 max-w-5xl">
+          I build intelligent systems that connect data, behavior, and real-world use.
+          With 15+ years across product, backend engineering, cloud systems, and APIs,
+          I focus on turning complex data into practical, scalable products.
+          Today, I work at the intersection of Python, applied ML, and AI,
+          building systems that don’t just respond, but understand context and adapt to users.
+        </p>
 
-            <p className="mt-4 max-w-xl text-base text-zinc-600 dark:text-zinc-400">
-              Product-focused technical engineer building cloud-based systems, APIs, and distributed data platforms.
-            </p>
-          </section>
+        <p className="mt-3 italic text-zinc-500">
+          Prefer less scrolling? Ask ZeeAI below.
+        </p>
 
-          <section className="mt-16 border-t pt-10">
-            <h2 className="text-2xl font-semibold mb-10 text-black dark:text-zinc-50">
-              Projects
-            </h2>
+        {/* DIVIDER */}
+        <div className="mt-10 border-t pt-6" />
 
-            <div className="mb-16">
-              <h3 className="text-lg font-semibold">
-                TruSic — Less Skip. More Play.
-              </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 mb-4 max-w-xl">
-                Context-aware music system combining embeddings and behavioral triggers.
-              </p>
+        {/* SPLIT SECTION */}
+        <div className="grid grid-cols-10 gap-12 mt-10">
+
+          {/* LEFT */}
+          <div className="col-span-7">
+            <h2 className="text-2xl font-semibold mb-4">Interests</h2>
+            <ul className="text-base space-y-2 text-zinc-700 dark:text-zinc-300">
+              <li>Focused on Python, applied ML/AI, and retrieval systems (RAG) for real-world product use</li>
+              <li>Systems-first thinker — I prefer understanding how things work over surface-level usage</li>
+              <li>Technical reading: Deep Learning (Goodfellow) and applied ML systems</li>
+              <li>Broader thinking: Max Tegmark, Richard Dawkins, Carl Sagan, Robert Sapolsky</li>
+              <li>Long-form thinking through podcasts like Acquired and other technology / business conversations</li>
+              <li>Naturally drawn to investigative thrillers, with a bias toward uncovering how things work</li>
+              <li>Learning through life as much as code, raising a teenage son</li>
+            </ul>
+          </div>
+
+          {/* RIGHT */}
+          <div className="col-span-3 mt-2">
+            <h2 className="text-2xl font-semibold mb-4">Explore</h2>
+
+            <div className="space-y-3 text-base">
+              <p><a href="https://github.com/vasthelium" className="underline">GitHub</a></p>
+              <p><a href="#" className="underline">Medium / Substack</a></p>
+              <p><a href="https://www.linkedin.com/in/syedzameerm" className="underline">LinkedIn</a></p>
+              <p><a href="#" className="underline font-medium">Download Full Resume (PDF)</a></p>
             </div>
 
-            <div className="mb-16">
-              <h3 className="text-lg font-semibold">
-                Unnamed Health Engine
-              </h3>
-              <p className="text-zinc-600 dark:text-zinc-400 mb-4 max-w-xl">
-                Converts physiological data into adaptive guidance using pipelines + LLM.
+            {/* JOB MATCHER */}
+            <div className="mt-8 border-t pt-4">
+              <h3 className="text-lg font-semibold">Match Your Role</h3>
+              <p className="text-sm text-zinc-500 mt-1">
+                Paste a job description and see alignment
               </p>
+
+              {!showMatcher && (
+                <button
+                  onClick={() => setShowMatcher(true)}
+                  className="mt-3 px-4 py-2 bg-black text-white rounded text-sm"
+                >
+                  Try Job Matcher
+                </button>
+              )}
+
+              {showMatcher && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black/30 z-50">
+                  <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-lg w-[500px] relative">
+
+                    {/* CLOSE BUTTON */}
+                    <button
+                      onClick={() => setShowMatcher(false)}
+                      className="absolute top-3 right-3 text-zinc-500 hover:text-black"
+                    >
+                      ✕
+                    </button>
+
+                    <h3 className="text-lg font-semibold mb-3">Match Your Role</h3>
+
+                    <textarea
+                      value={jobDesc}
+                      onChange={(e) => setJobDesc(e.target.value)}
+                      placeholder="Paste job description..."
+                      className="w-full border rounded p-2 text-sm h-32"
+                    />
+
+                    <button
+                      onClick={handleMatch}
+                      className="mt-3 px-4 py-2 bg-black text-white rounded text-sm">
+                      {loadingMatch ? "Generating..." : "Generate Match"}
+                    </button>
+
+                    {matchResult && (
+                      <div className="mt-4 text-sm whitespace-pre-wrap border-t pt-3">
+                        {matchResult}
+                      </div>
+                    )}
+
+                  </div>
+                </div>
+              )}
             </div>
-          </section>
+          </div>
 
         </div>
 
-        <div className="col-span-1 space-y-10">
-          <div>
-            <h3 className="font-semibold mb-2 text-black dark:text-zinc-50">Contact</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              techiezameer.h@gmail.com
+        {/* PROJECTS */}
+        <div className="mt-16">
+          <h2 className="text-2xl font-semibold mb-6">Projects / Research</h2>
+
+          <div className="mb-10">
+            <h3 className="font-semibold mb-2">TruSic</h3>
+
+            <p className="text-sm mt-1 mb-3">
+              <a href="#" className="underline">System Diagram</a> ·{" "}
+              <a href="https://github.com/vasthelium/TruSic" className="underline">GitHub</a>
             </p>
+            <ul className="text-base space-y-2">
+              <li>Building a context-aware music system that aligns playback with real-time human state</li>
+              <li>Combines audio embeddings (CLAP), physiological signals , state triggers to model “felt music”</li>
+              <li>Trigger-based memory modeling</li>
+              <li>State-based retrieval approach</li>
+              <li>Vector similarity (pgvector)</li>
+            </ul>
+          </div>
+
+          <div className="mb-10">
+            <h3 className="font-semibold mb-2">Health Engine</h3>
+
+            <p className="text-sm mt-1 mb-3">
+              <a href="#" className="underline">System Diagram</a> ·{" "}
+              <a href="https://github.com/vasthelium/unnamedengine" className="underline">GitHub</a>
+            </p>
+            <ul className="text-base space-y-2">
+              <li>A personal health intelligence system that translates physiological data into adaptive daily guidance</li>
+              <li>Ingests wearable data, normalizes signals, applies rule-based and LLM-driven reasoning</li>
+              <li>Focuses on flexible, user-specific behavior guidance instead of rigid templates</li>
+              <li>Fully automated pipeline using scheduled workflows (GitHub Actions)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-2">AI Resume Site</h3>
+
+            <p className="text-sm mt-1 mb-3">
+              <a href="#" className="underline">System Diagram</a> ·{" "}
+              <a href="https://github.com/vasthelium/zee-ai-site" className="underline">GitHub</a>
+            </p>
+            <ul className="text-base space-y-2">
+              <li>Custom RAG pipeline (chunking, embeddings, retrieval, LLM) over a curated personal corpus</li>
+              <li>Real-time interaction through a FastAPI backend integrated with a lightweight frontend (Next.js)</li>
+              <li>AI-powered portfolio that allows users to interact with work through conversation instead of static content</li>
+              <li>Interactive portfolio</li>
+            </ul>
           </div>
         </div>
 
-      </main>
+        {/* WORK EXPERIENCE */}
+        <div className="mt-16">
+          <h2 className="text-2xl font-semibold mb-6">Work Experience</h2>
 
+          {/* Yum */}
+          <div className="mb-8">
+            <h3 className="font-semibold">Yum Brands — Product Technical Engineer</h3>
+            <p className="text-sm text-zinc-500">Apr 2023 - Present</p>
+            <ul className="mt-2 space-y-2">
+              <li>Contributing to AI-driven predictive search and suggestion systems within the Menu Request Hub, enabling reuse of existing menu and promotion configurations based on contextual similarity</li>
+              <li>Designing context-aware reuse patterns to reduce duplication and improve efficiency</li>
+              <li>Leading product development of MOA systems with AWS backend integration</li>
+              <li>Working across API-driven distributed systems ensuring reliability</li>
+              <li>Improving system scalability and observability through CloudWatch and Splunk</li>
+              <li>Exposure to enterprise AI systems and production evaluation frameworks</li>
+            </ul>
+          </div>
+
+          {/* PACCAR */}
+          <div className="mb-8">
+            <h3 className="font-semibold">PACCAR — Technical Product Analyst</h3>
+            <p className="text-sm text-zinc-500">Oct 2023 – Apr 2024</p>
+            <ul className="mt-2 space-y-2">
+              <li>Contributed to PACCGPT, an internal AI-driven enterprise knowledge interface</li>
+              <li>Defined data integration points for Connected Vehicle Platform (CVP)</li>
+              <li>Aligned vehicle diagnostics data for future AI system integration</li>
+              <li>Supported Azure-based event-driven modernization architecture</li>
+              <li>Worked across APIs, data pipelines, and microservices systems</li>
+            </ul>
+          </div>
+
+          {/* Toyota */}
+          <div className="mb-8">
+            <h3 className="font-semibold">Toyota — Technical Product Owner / Analyst</h3>
+            <p className="text-sm text-zinc-500">Sep 2021 – Jul 2023</p>
+            <ul className="mt-2 space-y-2">
+              <li>Led API mapping and end-to-end data flow across legacy and cloud systems</li>
+              <li>Supported AWS migration and microservices transformation</li>
+              <li>Defined and refined system requirements for modernization initiatives</li>
+              <li>Improved system integration reliability</li>
+              <li>Maintained system documentation and onboarding assets</li>
+            </ul>
+          </div>
+
+          {/* United */}
+          <div className="mb-8">
+            <h3 className="font-semibold">United Airlines — Technical Analyst</h3>
+            <p className="text-sm text-zinc-500">Feb 2020 – Sep 2021</p>
+            <ul className="mt-2 space-y-2">
+              <li>Supported development of customer-facing mobile applications</li>
+              <li>Worked across full lifecycle from requirements to production</li>
+              <li>Conducted gap analysis and modernization planning</li>
+              <li>Collaborated with engineering and design teams</li>
+              <li>Ensured API compatibility and performance</li>
+            </ul>
+          </div>
+
+          {/* Aspire */}
+          <div className="mb-8">
+            <h3 className="font-semibold">Aspire Systems — Software Engineer</h3>
+            <p className="text-sm text-zinc-500">May 2016 – Dec 2019</p>
+            <ul className="mt-2 space-y-2">
+              <li>Built large-scale data processing systems</li>
+              <li>Developed SQL + Python pipelines</li>
+              <li>Worked with PostgreSQL and enterprise data systems</li>
+              <li>Built automation for validation and workflows</li>
+              <li>Ensured system reliability and performance</li>
+            </ul>
+          </div>
+
+          {/* Earlier */}
+          <div>
+            <h3 className="font-semibold">Earlier Experience — NTT Data / Wipro</h3>
+            <ul className="mt-2 space-y-2">
+              <li>Worked on healthcare and financial systems</li>
+              <li>Handled integrations and compliance systems</li>
+              <li>Supported testing and automation workflows</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* TOOLS */}
+        <div className="mt-16">
+          <h3 className="font-semibold mb-2">Tools</h3>
+          <ul className="space-y-2">
+            <li>Python, APIs, FastAPI, OpenAI / LLM APIs</li>
+            <li>PostgreSQL (Neon), pgvector, Pinecone, MySQL</li>
+            <li>AWS, Azure, Vercel</li>
+            <li>Postman, Swagger, GitHub Actions, Atlassian, Azure DevOps</li>
+            <li>CloudWatch, Splunk, AppDynamics</li>
+            <li>AWS Certified Solutions Architect, Google IT Automation with Python</li>
+            <li>CKAD (In Progress), Docker</li>
+          </ul>
+        </div>
+
+      </div>
+
+      {/* CHAT — unchanged */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-black text-white flex items-center justify-center shadow-lg"
+        className="fixed bottom-6 right-6 px-5 py-3 rounded-full bg-black text-white flex items-center gap-2 shadow-lg text-sm"
       >
-        💬
+        💬 <span className="font-medium">Ask ZeeAI</span>
       </button>
 
       {open && (
-        <div className="fixed bottom-24 right-6 w-80 h-96 bg-white dark:bg-zinc-900 border rounded-lg shadow-lg flex flex-col">
-          
-          <div className="p-3 border-b font-semibold">
-            Ask Zee AI
-          </div>
-
-          <div
-          ref={chatRef}
-          className="flex-1 p-3 text-sm overflow-y-auto space-y-3 max-h-[320px]"
-          >
-            {messages.length === 0 && (
-              <div className="text-zinc-500">Ask me anything about Zee...</div>
-            )}
-
-            {messages.map((msg, i) => (
-            <div
-              key={i}
-              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`px-3 py-2 rounded-lg max-w-[80%] text-sm ${
-                  msg.role === "user"
-                    ? "bg-black text-white"
-                    : "bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200"
-                }`}
-              >
-                {msg.content}
-              </div>
-            </div>
-          ))}
-          </div>
-
-          <div className="p-3 border-t flex gap-2">
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              className="w-full border rounded-md px-2 py-1 text-sm"
-              placeholder="Ask something..."
-              onKeyDown={(e) => {
-                if (e.key === "Enter") handleSend();
-              }}
-            />
-
+        <div className="fixed bottom-24 right-6 w-[420px] h-[520px] bg-white dark:bg-zinc-900 border rounded-lg shadow-lg flex flex-col">
+          <div className="p-3 border-b font-semibold flex justify-between items-center">
+            <span>Ask Zee AI</span>
             <button
-              onClick={handleSend}
-              className="px-3 py-1 text-sm bg-black text-white rounded-md"
+              onClick={() => setOpen(false)}
+              className="text-zinc-500 hover:text-black text-sm"
             >
-              Send
+              ✕
             </button>
           </div>
 
+          <div ref={chatRef} className="flex-1 p-3 overflow-y-auto space-y-3 text-sm">
+            {messages.map((msg, i) => (
+              <div key={i} className={msg.role === "user" ? "text-right" : ""}>
+                <div className={`inline-block px-3 py-2 rounded-lg ${msg.role === "user"
+                  ? "bg-black text-white"
+                  : "bg-zinc-200 dark:bg-zinc-700"
+                  }`}>
+                  {msg.content}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-3 flex gap-2 border-t">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className="w-full border px-2 py-1 rounded text-sm"
+              placeholder="Ask something..."
+              onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            />
+            <button onClick={handleSend} className="bg-black text-white px-3 rounded">
+              Send
+            </button>
+          </div>
         </div>
       )}
     </div>
