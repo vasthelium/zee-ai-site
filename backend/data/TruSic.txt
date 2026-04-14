@@ -1,0 +1,118 @@
+Project TruSic — Context-Aware Music Intelligence System
+
+TruSic is a context-aware music intelligence system that retrieves music based on a user’s internal state rather than static listening history.
+
+TruSic combines audio understanding, physiological signals, behavioral triggers, and learned representations to align music selection with how a person feels in the moment.
+
+TruSic uses embeddings, vector similarity, and contextual signals to recommend music based on real-time human condition.
+
+TruSic is not a traditional recommendation system. TruSic does not rely on listening history or collaborative filtering. TruSic focuses on real-time human state and contextual alignment.
+
+System Overview of TruSic
+
+TruSic is built as two connected pipelines: an Audio Intelligence Pipeline and a Human Context Pipeline.
+
+TruSic converges these pipelines into a shared embedding space where music representation and human state representation can be compared directly.
+
+TruSic aligns multiple modalities including audio signals, physiological data, and behavioral context into a unified vector representation.
+
+TruSic enables direct comparison between how a person feels and how music is represented.
+
+Audio Pipeline of TruSic — Audio Intelligence Layer
+
+TruSic processes raw audio files and converts them into normalized vector embeddings for similarity-based retrieval.
+
+TruSic represents music as structured numerical vectors that capture acoustic and semantic characteristics.
+
+Audio Ingestion of TruSic includes loading m4a audio files using librosa, resampling audio to a consistent sampling rate, converting waveform data into torch float32 tensors, and preparing batched inputs for model compatibility.
+
+Privacy Filtering of TruSic uses Wav2Vec2 to detect speech within audio signals. TruSic converts waveform inputs into logits, decodes token predictions into transcription, and applies thresholds to remove files containing speech. TruSic ensures that only music-relevant signals proceed downstream.
+
+Audio Classification of TruSic uses YAMNet from TensorFlow Hub. TruSic performs temporal pooling across time frames, computes probability distributions across 521 audio categories, and filters for music-related classes such as instruments and percussion.
+
+Audio Embedding of TruSic uses the CLAP model to generate embeddings. TruSic resamples waveform data to 48kHz, generates 512-dimensional embeddings, and applies L2 normalization to optimize for cosine similarity.
+
+Storage of TruSic persists embeddings in PostgreSQL using the pgvector extension. TruSic stores song identity alongside 512-dimensional embedding vectors, enabling efficient vector similarity search across the music corpus.
+
+
+Human Context Pipeline of TruSic — State Representation Layer
+
+TruSic converts physiological and behavioral signals into structured representations of human state.
+
+TruSic models how a person feels in the moment rather than relying on historical listening behavior.
+
+Oura Data Ingestion of TruSic authenticates using OAuth and retrieves physiological signals including HRV, heart rate, readiness score, and sleep duration. TruSic flattens nested API responses and stores structured data in PostgreSQL.
+
+Cognitive State Derivation of TruSic combines readiness score, HRV balance, and activity baseline to produce a continuous scalar representation of user condition.
+
+Trigger System of TruSic captures behavioral context linked to music recall. TruSic records song identity, trigger activity, and trigger drive including emotional, cognitive, or neutral context. TruSic filters and validates trigger records to maintain signal quality.
+
+Text Embedding of TruSic uses HuggingFace models to convert trigger activity into vector representations. TruSic captures the semantic meaning of experiences associated with music recall.
+
+Feature Construction of TruSic combines cognitive state, encoded trigger drive, and text embeddings into structured numerical inputs for downstream learning.
+
+
+Learning and Representation of TruSic — Alignment Layer
+
+TruSic learns a representation of human state aligned with audio embeddings.
+
+TruSic projects human context into the same embedding space as music, enabling direct comparison between internal state and audio representation.
+
+MLP Representation Layer of TruSic takes combined features as input and produces a 512-dimensional embedding. TruSic uses a dense architecture (386 → 256 → 512) with ReLU activation and output normalization.
+
+Learning Loop of TruSic uses proxy behavioral signals such as skip duration to compute regression loss and update model parameters. TruSic continuously refines alignment between human state and music representation.
+
+TruSic produces a state embedding that represents how a person feels in a format directly comparable to music embeddings.
+
+
+Retrieval Layer of TruSic — Vector Similarity Search
+
+TruSic performs similarity search using pgvector.
+
+TruSic compares state embeddings with stored audio embeddings and retrieves nearest songs based on vector distance.
+
+TruSic enables context-aware music retrieval aligned with real-time human condition rather than past listening patterns.
+
+TruSic retrieves music that matches internal state instead of historical preference.
+
+
+System Design Principles of TruSic
+
+TruSic is designed as a multi-modal AI system that aligns audio, physiology, and behavior in a shared embedding space.
+
+TruSic moves beyond history-based recommendation toward real-time contextual alignment.
+
+TruSic separates ingestion, processing, embedding, storage, and retrieval into distinct layers for modularity and scalability.
+
+TruSic handles real-world constraints including API failures, missing data, normalization requirements, and noisy inputs.
+
+TruSic is designed to evolve toward implicit modeling of memory, recall, and emotional context.
+
+
+Core Idea of TruSic
+
+TruSic does not optimize for popularity, listening history, or collaborative filtering.
+
+Instead, TruSic focuses on internal state, contextual signals, and the underlying reasons why music is recalled.
+
+TruSic aligns human condition with audio representation.
+
+TruSic retrieves music based on how a person feels rather than what a person previously listened to.
+
+
+Key Components and Technology of TruSic: Python, PyTorch (CLAP, Wav2Vec2), TensorFlow (YAMNet), HuggingFace (text embeddings), NumPy (learning layer), PostgreSQL with pgvector (vector storage), FastAPI (APIs), GitHub Actions (automation), and Oura API (physiological data) are used to build and operate TruSic.
+
+
+Retrieval-Friendly Summary of TruSic
+
+TruSic is an AI-powered music intelligence system.
+
+TruSic uses embeddings and vector similarity to retrieve music.
+
+TruSic combines audio processing, physiological data, and behavioral signals.
+
+TruSic builds a shared embedding space between human state and music representation.
+
+TruSic uses machine learning to align context with audio embeddings.
+
+TruSic retrieves songs based on real-time human condition rather than listening history.

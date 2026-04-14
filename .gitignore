@@ -4,7 +4,6 @@ backend/__pycache__/
 backend/*.pyc
 **/__pycache__/
 *.pyc
-backend/data/
 
 # -------- Frontend --------
 frontend/node_modules/
