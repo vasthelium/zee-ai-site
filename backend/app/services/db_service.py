@@ -24,4 +24,7 @@ def read_embeddingdata():
         connection_pool.putconn(conn)
     return embedding_data
 
+if __name__ == "__main__":
+    sendembeddings_db()
+
 

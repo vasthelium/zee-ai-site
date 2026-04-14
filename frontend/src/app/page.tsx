@@ -89,7 +89,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black font-sans px-6 py-16">
+    <div className="min-h-screen bg-zinc-50 dark:bg-black font-sans px-4 md:px-6 py-10 md:py-16 relative">
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
@@ -111,14 +111,18 @@ export default function Home() {
           Prefer less scrolling? Ask ZeeAI below.
         </p>
 
+        <p className="mt-2 text-xs text-zinc-400">
+          *This experience is optimized for desktop. Mobile enhancements are in progress.*
+        </p>
+
         {/* DIVIDER */}
         <div className="mt-10 border-t pt-6" />
 
         {/* SPLIT SECTION */}
-        <div className="grid grid-cols-10 gap-12 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-10 gap-8 md:gap-12 mt-10">
 
           {/* LEFT */}
-          <div className="col-span-7">
+          <div className="md:col-span-7">
             <h2 className="text-2xl font-semibold mb-4">Interests</h2>
             <ul className="text-base space-y-2 text-zinc-700 dark:text-zinc-300">
               <li>Focused on Python, applied ML/AI, and retrieval systems (RAG) for real-world product use</li>
@@ -132,18 +136,23 @@ export default function Home() {
           </div>
 
           {/* RIGHT */}
-          <div className="col-span-3 mt-2">
+          <div className="md:col-span-3 mt-6 md:mt-2">
             <h2 className="text-2xl font-semibold mb-4">Explore</h2>
 
             <div className="space-y-3 text-base">
-              <p><a href="https://github.com/vasthelium" className="underline">GitHub</a></p>
-              <p><a href="#" className="underline">Medium / Substack</a></p>
-              <p><a href="https://www.linkedin.com/in/syedzameerm" className="underline">LinkedIn</a></p>
+              <p><a href="https://github.com/vasthelium" className="underline">GitHub</a>
+                {" · "}
+                <a href="https://www.linkedin.com/in/syedzameerm" className="underline">LinkedIn</a></p>
+              <p>
+                <a href="#" className="underline">Medium</a>
+                {" · "}
+                <a href="#" className="underline">Substack</a>
+              </p>
               <p><a href="#" className="underline font-medium">Download Full Resume (PDF)</a></p>
             </div>
 
             {/* JOB MATCHER */}
-            <div className="mt-8 border-t pt-4">
+            <div className="mt-8">
               <h3 className="text-lg font-semibold">Match Your Role</h3>
               <p className="text-sm text-zinc-500 mt-1">
                 Paste a job description and see alignment
@@ -152,15 +161,15 @@ export default function Home() {
               {!showMatcher && (
                 <button
                   onClick={() => setShowMatcher(true)}
-                  className="mt-3 px-4 py-2 bg-black text-white rounded text-sm"
+                  className="mt-3 px-4 py-2 bg-black text-white rounded text-sm relative z-10"
                 >
                   Try Job Matcher
                 </button>
               )}
 
               {showMatcher && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black/30 z-50">
-                  <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-lg w-[500px] relative">
+                <div className="fixed inset-0 flex items-center justify-center bg-black/30 z-40 pointer-events-none">
+                  <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-lg w-[90vw] max-w-[500px] relative pointer-events-auto">
 
                     {/* CLOSE BUTTON */}
                     <button
@@ -348,15 +357,17 @@ export default function Home() {
       </div>
 
       {/* CHAT — unchanged */}
-      <button
-        onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 px-5 py-3 rounded-full bg-black text-white flex items-center gap-2 shadow-lg text-sm"
-      >
-        💬 <span className="font-medium">Ask ZeeAI</span>
-      </button>
+      {!showMatcher && (
+        <button
+          onClick={() => setOpen(!open)}
+          className="fixed bottom-6 right-4 md:right-[calc((100vw-72rem)/2+1.5rem)] px-5 py-3 rounded-full bg-black text-white flex items-center gap-2 shadow-lg text-sm z-50"
+        >
+          💬 <span className="font-medium">Ask ZeeAI</span>
+        </button>
+      )}
 
       {open && (
-        <div className="fixed bottom-24 right-6 w-[420px] h-[520px] bg-white dark:bg-zinc-900 border rounded-lg shadow-lg flex flex-col">
+        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[calc((100vw-72rem)/2+1.5rem)] w-[90vw] max-w-[420px] h-[70vh] max-h-[520px] bg-white dark:bg-zinc-900 border rounded-lg shadow-lg flex flex-col">
           <div className="p-3 border-b font-semibold flex justify-between items-center">
             <span>Ask Zee AI</span>
             <button
@@ -391,6 +402,10 @@ export default function Home() {
             <button onClick={handleSend} className="bg-black text-white px-3 rounded">
               Send
             </button>
+          </div>
+          {/* DISCLAIMER */}
+          <div className="px-3 pb-2 text-[11px] text-zinc-500">
+            *AI responses are based on available context and may not always be complete. For deeper discussion, feel free to contact Zameer directly.*
           </div>
         </div>
       )}

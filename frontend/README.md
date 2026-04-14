@@ -1,5 +1,9 @@
 # Zee AI Site
-AI-powered portfolio that lets users chat with my work instead of reading a static resume.
+AI-powered portfolio that lets users query, evaluate, and interact with my work instead of reading a static resume.
+
+## Philosophy
+Don’t read my resume.
+Query it. Evaluate it. Challenge it.
 
 # Architecture
 - Frontend: Next.js
@@ -13,6 +17,16 @@ AI-powered portfolio that lets users chat with my work instead of reading a stat
 - Fully custom pipeline (no heavy frameworks)
 - Clean modular backend design
 
+# Job Matcher
+- Paste a job description and evaluate alignment instantly
+- Uses the same RAG pipeline (embedding → retrieval → LLM)
+- Returns structured output:
+  - Match Score (1–10)
+  - Summary of fit
+  - Key strengths
+  - Gaps / missing areas
+- Helps simulate real-world job screening and highlights improvement areas
+
 # Project Structure 📂
 backend/
   app/
@@ -23,11 +37,7 @@ frontend/
   src/app/
 
 # Future Roadmap
-- Deployment (Vercel + AWS)
-- UI/UX refinement
-- Retrieval tuning
 - Advanced AI features
 
-## Philosophy
-Don’t read my resume.
-Talk to it.
+# Note: 
+- Personal data files (e.g., resume corpus used for RAG) are excluded from the repository for privacy.
