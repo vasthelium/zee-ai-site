@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const { message } = await req.json();
 
-  const response = await fetch("http://127.0.0.1:8000/chat", {
+  const response = await fetch("http://18.234.170.226:8000/chat", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -14,6 +14,6 @@ export async function POST(req: Request) {
   const data = await response.json();
 
   return NextResponse.json({
-  reply: data,
+    reply: data,
   });
 }
