@@ -139,20 +139,8 @@ export default function Home() {
           <div className="md:col-span-3 mt-6 md:mt-2">
             <h2 className="text-2xl font-semibold mb-4">Explore</h2>
 
-            <div className="space-y-3 text-base">
-              <p><a href="https://github.com/vasthelium" className="underline">GitHub</a>
-                {" · "}
-                <a href="https://www.linkedin.com/in/syedzameerm" className="underline">LinkedIn</a></p>
-              <p>
-                <a href="#" className="underline">Medium</a>
-                {" · "}
-                <a href="#" className="underline">Substack</a>
-              </p>
-              <p><a href="#" className="underline font-medium">Download Full Resume (PDF)</a></p>
-            </div>
-
             {/* JOB MATCHER */}
-            <div className="mt-8">
+            <div className="mt-2">
               <h3 className="text-lg font-semibold">Match Your Role</h3>
               <p className="text-sm text-zinc-500 mt-1">
                 Paste a job description and see alignment
@@ -161,15 +149,15 @@ export default function Home() {
               {!showMatcher && (
                 <button
                   onClick={() => setShowMatcher(true)}
-                  className="mt-3 px-4 py-2 bg-black text-white rounded text-sm relative z-10"
+                  className="mt-2 mb-2 px-4 py-2 bg-black text-white rounded text-sm relative z-10"
                 >
                   Try Job Matcher
                 </button>
               )}
 
               {showMatcher && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black/30 z-40 pointer-events-none">
-                  <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-lg w-[90vw] max-w-[500px] relative pointer-events-auto">
+                <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+                  <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-lg w-[90vw] max-w-[500px] relative">
 
                     {/* CLOSE BUTTON */}
                     <button
@@ -195,7 +183,7 @@ export default function Home() {
                     </button>
 
                     {matchResult && (
-                      <div className="mt-4 text-sm whitespace-pre-wrap border-t pt-3">
+                      <div className="mt-4 text-sm whitespace-pre-wrap border-t pt-3 max-h-64 overflow-y-auto">
                         {matchResult}
                       </div>
                     )}
@@ -204,6 +192,21 @@ export default function Home() {
                 </div>
               )}
             </div>
+
+            <div className="space-y-2 text-base">
+              <p>
+                <a href="https://github.com/vasthelium" className="underline">GitHub</a>
+                {" · "}
+                <a href="https://www.linkedin.com/in/syedzameerm" className="underline">LinkedIn</a>
+                {" · "}
+                <a href="#" className="underline">Medium</a>
+              </p>
+
+              <p>
+                <a href="#" className="underline font-medium">Download Full Resume (PDF)</a>
+              </p>
+            </div>
+
           </div>
 
         </div>
@@ -360,14 +363,14 @@ export default function Home() {
       {!showMatcher && (
         <button
           onClick={() => setOpen(!open)}
-          className="fixed bottom-6 right-4 md:right-[calc((100vw-72rem)/2+1.5rem)] px-5 py-3 rounded-full bg-black text-white flex items-center gap-2 shadow-lg text-sm z-50"
+          className="fixed bottom-6 right-4 md:right-[calc((100vw-72rem)/2+1.5rem)] px-5 py-3 rounded-full bg-black text-white flex items-center gap-2 shadow-lg text-sm z-30"
         >
           💬 <span className="font-medium">Ask ZeeAI</span>
         </button>
       )}
 
       {open && (
-        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-[calc((100vw-72rem)/2+1.5rem)] w-[90vw] max-w-[420px] h-[70vh] max-h-[520px] bg-white dark:bg-zinc-900 border rounded-lg shadow-lg flex flex-col">
+        <div className="fixed bottom-6 right-4 md:right-[calc((100vw-72rem)/2+1.5rem)] w-[72vw] max-w-[320px] h-[52vh] max-h-[460px] bg-white dark:bg-zinc-900 border rounded-lg shadow-lg flex flex-col">
           <div className="p-3 border-b font-semibold flex justify-between items-center">
             <span>Ask Zee AI</span>
             <button
@@ -405,7 +408,7 @@ export default function Home() {
           </div>
           {/* DISCLAIMER */}
           <div className="px-3 pb-2 text-[11px] text-zinc-500">
-            *AI responses are based on available context and may not always be complete. For deeper discussion, feel free to contact Zameer directly.*
+            *AI responses may be incomplete. Reach out to Zameer for more info..*
           </div>
         </div>
       )}
