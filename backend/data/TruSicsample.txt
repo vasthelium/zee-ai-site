@@ -1,0 +1,12 @@
+This is a sample data file.
+Actual corpus is not included in this repository.
+
+Project TruSic — Context-Aware Music Intelligence System
+
+TruSic is a context-aware music intelligence system that retrieves music based on a user’s internal state rather than static listening history.
+
+TruSic combines audio understanding, physiological signals, behavioral triggers, and learned representations to align music selection with how a person feels in the moment.
+
+TruSic uses embeddings, vector similarity, and contextual signals to recommend music based on real-time human condition.
+
+TruSic is not a traditional recommendation system. TruSic does not rely on listening history or collaborative filtering. TruSic focuses on real-time human state and contextual alignment.

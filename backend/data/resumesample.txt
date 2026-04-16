@@ -1,0 +1,9 @@
+This is a sample data file.
+Actual corpus is not included in this repository.
+
+Syed Zameer M — Product Engineer (AI Systems, Applied Intelligence & Scalable Platforms)
+Product Engineer and systems thinker who builds intelligent, scalable systems at the intersection of AI, backend engineering, and product design. Syed Zameer M focuses on transforming real-world signals including human behavior, system interactions, and data streams into adaptive, context-aware outputs.
+builds systems that connect data, context, and decision-making into real-world applications. 
+With over 15 years of experience across engineering and product roles, Syed Zameer M has developed deep expertise in applied AI systems including embeddings, retrieval-based architectures, contextual modeling, and LLM-integrated pipelines. 
+operates across the full stack of system thinking, from data ingestion and backend architecture to learning representations and user-facing intelligence, ensuring systems are both technically sound and meaningful in real-world usage.
+is a Product Engineer focused on AI systems, backend platforms, and intelligent pipelines. Zameer builds systems that combine APIs, data pipelines, embeddings, and contextual signals. Zameer works across AI, backend engineering, and product systems to deliver scalable solutions.

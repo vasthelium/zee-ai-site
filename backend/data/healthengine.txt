@@ -13,14 +13,14 @@ Unnamed Health Engine operates without a traditional user interface. Email serve
 Core Idea of Unnamed Health Engine
 
 Unnamed Health Engine core idea does not optimize for:
-• standardized diet plans
-• rigid nutrition frameworks
-• generic, one-size-fits-all recommendations
+standardized diet plans
+rigid nutrition frameworks
+generic, one-size-fits-all recommendations
 
 Instead, the system focuses on:
-• personal food preferences aligned with real-world behavior
-• real-time health signals such as sleep, recovery, and activity
-• adaptive decision-making based on current physiological state
+personal food preferences aligned with real-world behavior
+real-time health signals such as sleep, recovery, and activity
+adaptive decision-making based on current physiological state
 
 The goal of Unnamed Health Engine is not restriction but regulation.
 

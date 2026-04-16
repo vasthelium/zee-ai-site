@@ -93,7 +93,7 @@ export default function Home() {
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <h1 className="text-5xl font-semibold">Syed Zameer (Zee)</h1>
+        <h1 className="text-5xl font-semibold">Syed Zameer M</h1>
 
         <p className="mt-3 text-xl font-bold text-zinc-800 dark:text-zinc-200">
           +1 972.441.2534 · techiezameer.m@gmail.com
@@ -195,15 +195,22 @@ export default function Home() {
 
             <div className="space-y-2 text-base">
               <p>
-                <a href="https://github.com/vasthelium" className="underline">GitHub</a>
+                <a href="https://github.com/vasthelium" className="underline" target="_blank" rel="noopener noreferrer">GitHub</a>
                 {" · "}
-                <a href="https://www.linkedin.com/in/syedzameerm" className="underline">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/syedzameerm" className="underline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 {" · "}
-                <a href="#" className="underline">Medium</a>
+                <a href="https://medium.com/@techiezameer.m/trusic-playing-what-you-feel-not-what-you-usually-play-436870da0cd4" className="underline" target="_blank" rel="noopener noreferrer">Medium</a>
               </p>
 
               <p>
-                <a href="#" className="underline font-medium">Download Full Resume (PDF)</a>
+                <a
+                  href="https://syedzameer-ai-data.s3.us-east-1.amazonaws.com/SyedZameer_Resume_Y2026.pdf"
+                  className="underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Download Full Resume (PDF)
+                </a>
               </p>
             </div>
 
@@ -224,13 +231,26 @@ export default function Home() {
             </p>
             <ul className="text-base space-y-2">
               <li>Building a context-aware music system that aligns playback with real-time human state</li>
-              <li>Combines audio embeddings (CLAP), physiological signals , state triggers to model “felt music”</li>
-              <li>Trigger-based memory modeling</li>
-              <li>State-based retrieval approach</li>
-              <li>Vector similarity (pgvector)</li>
+              <li>Multimodal system combining CLAP, YAMNet, Wav2Vec, physiological signals, and behavioral triggers to model “felt music”</li>
+              <li>Uses structured trigger signals and contextual inputs to model and progressively learn song associations</li>
+              <li>Shifts retrieval from history-based recommendations to current internal state</li>
+              <li>Leverages vector similarity (pgvector) to match contextual embeddings for precise retrieval</li>
             </ul>
           </div>
+          <div className="mb-10">
+            <h3 className="font-semibold mb-2">AI Resume Site</h3>
 
+            <p className="text-sm mt-1 mb-3">
+              <a href="#" className="underline">System Diagram</a> ·{" "}
+              <a href="https://github.com/vasthelium/zee-ai-site" className="underline">GitHub</a>
+            </p>
+            <ul className="text-base space-y-2">
+              <li>Custom RAG pipeline (chunking, embeddings, retrieval, LLM) over a curated personal corpus</li>
+              <li>Real-time interaction through a FastAPI backend integrated with a lightweight frontend (Next.js)</li>
+              <li>AI-powered portfolio that allows users to interact with work through conversation instead of static content</li>
+              <li>Transforms a traditional resume into a context-aware, interactive system</li>
+            </ul>
+          </div>
           <div className="mb-10">
             <h3 className="font-semibold mb-2">Health Engine</h3>
 
@@ -245,21 +265,6 @@ export default function Home() {
               <li>Fully automated pipeline using scheduled workflows (GitHub Actions)</li>
             </ul>
           </div>
-
-          <div>
-            <h3 className="font-semibold mb-2">AI Resume Site</h3>
-
-            <p className="text-sm mt-1 mb-3">
-              <a href="#" className="underline">System Diagram</a> ·{" "}
-              <a href="https://github.com/vasthelium/zee-ai-site" className="underline">GitHub</a>
-            </p>
-            <ul className="text-base space-y-2">
-              <li>Custom RAG pipeline (chunking, embeddings, retrieval, LLM) over a curated personal corpus</li>
-              <li>Real-time interaction through a FastAPI backend integrated with a lightweight frontend (Next.js)</li>
-              <li>AI-powered portfolio that allows users to interact with work through conversation instead of static content</li>
-              <li>Interactive portfolio</li>
-            </ul>
-          </div>
         </div>
 
         {/* WORK EXPERIENCE */}
@@ -271,12 +276,12 @@ export default function Home() {
             <h3 className="font-semibold">Yum Brands — Product Technical Engineer</h3>
             <p className="text-sm text-zinc-500">Apr 2023 - Present</p>
             <ul className="mt-2 space-y-2">
-              <li>Contributing to AI-driven predictive search and suggestion systems within the Menu Request Hub, enabling reuse of existing menu and promotion configurations based on contextual similarity</li>
+              <li>Building AI-driven predictive search and suggestion systems within menu hub enabling contextual reuse of existing configurations</li>
               <li>Designing context-aware reuse patterns to reduce duplication and improve efficiency</li>
-              <li>Leading product development of MOA systems with AWS backend integration</li>
-              <li>Working across API-driven distributed systems ensuring reliability</li>
-              <li>Improving system scalability and observability through CloudWatch and Splunk</li>
-              <li>Exposure to enterprise AI systems and production evaluation frameworks</li>
+              <li>Leading product development of menu management systems, integrating AWS services (Lambda, S3, RDS) to support workflows</li>
+              <li>Working across API-driven systems, validating payloads and ensuring reliable request-response flows across distributed services</li>
+              <li>Improving system scalability and observability through CloudWatch and DataDog</li>
+              <li>Worked with enterprise AI systems and production evaluation frameworks</li>
             </ul>
           </div>
 
@@ -285,11 +290,11 @@ export default function Home() {
             <h3 className="font-semibold">PACCAR — Technical Product Analyst</h3>
             <p className="text-sm text-zinc-500">Oct 2023 – Apr 2024</p>
             <ul className="mt-2 space-y-2">
-              <li>Contributed to PACCGPT, an internal AI-driven enterprise knowledge interface</li>
-              <li>Defined data integration points for Connected Vehicle Platform (CVP)</li>
-              <li>Aligned vehicle diagnostics data for future AI system integration</li>
-              <li>Supported Azure-based event-driven modernization architecture</li>
-              <li>Worked across APIs, data pipelines, and microservices systems</li>
+              <li>Contributed to PACCGPT, an internal AI-driven enterprise knowledge interface, supporting early-stage development and integration design</li>
+              <li>Defined data integration points for the Connected Vehicle Platform (CVP), aligning fleet and diagnostic systems</li>
+              <li>Aligned vehicle diagnostics data to enable future integration into AI-driven systems</li>
+              <li>Supported modernization efforts transitioning legacy systems to Azure-based, event-driven architecture</li>
+              <li>Worked across APIs, data pipelines, and microservices, supporting distributed system integrations</li>
             </ul>
           </div>
 
@@ -298,11 +303,10 @@ export default function Home() {
             <h3 className="font-semibold">Toyota — Technical Product Owner / Analyst</h3>
             <p className="text-sm text-zinc-500">Sep 2021 – Jul 2023</p>
             <ul className="mt-2 space-y-2">
-              <li>Led API mapping and end-to-end data flow across legacy and cloud systems</li>
-              <li>Supported AWS migration and microservices transformation</li>
-              <li>Defined and refined system requirements for modernization initiatives</li>
-              <li>Improved system integration reliability</li>
-              <li>Maintained system documentation and onboarding assets</li>
+              <li>Led API mapping and end-to-end data flow analysis across legacy and cloud-native systems during AWS migration</li>
+              <li>Supported transition to microservices and event-driven architecture, improving performance and integration reliability</li>
+              <li>Collaborated with cross-functional teams to define and refine requirements for large-scale modernization initiatives</li>
+              <li>Maintained system documentation and integration artifacts to support delivery, onboarding, and knowledge sharing</li>
             </ul>
           </div>
 
@@ -311,11 +315,10 @@ export default function Home() {
             <h3 className="font-semibold">United Airlines — Technical Analyst</h3>
             <p className="text-sm text-zinc-500">Feb 2020 – Sep 2021</p>
             <ul className="mt-2 space-y-2">
-              <li>Supported development of customer-facing mobile applications</li>
-              <li>Worked across full lifecycle from requirements to production</li>
-              <li>Conducted gap analysis and modernization planning</li>
-              <li>Collaborated with engineering and design teams</li>
-              <li>Ensured API compatibility and performance</li>
+              <li>Supported end-to-end development of customer-facing mobile applications, from requirements through production deployment</li>
+              <li>Conducted gap analysis and feature prioritization to support transition from legacy to modern platforms</li>
+              <li>Collaborated with engineering and design teams to translate user needs into functional requirements and improve usability</li>
+              <li>Ensured API compatibility and consistent performance across mobile and responsive platforms</li>
             </ul>
           </div>
 
@@ -324,11 +327,11 @@ export default function Home() {
             <h3 className="font-semibold">Aspire Systems — Software Engineer</h3>
             <p className="text-sm text-zinc-500">May 2016 – Dec 2019</p>
             <ul className="mt-2 space-y-2">
-              <li>Built large-scale data processing systems</li>
-              <li>Developed SQL + Python pipelines</li>
-              <li>Worked with PostgreSQL and enterprise data systems</li>
-              <li>Built automation for validation and workflows</li>
-              <li>Ensured system reliability and performance</li>
+              <li>Worked on large-scale data processing systems in the warranty domain, supporting high-volume enterprise platforms</li>
+              <li>Built and maintained data pipelines using SQL and Python for processing, transformation, and validation</li>
+              <li>Contributed to data engineering workflows using PostgreSQL and enterprise data platforms, ensuring accuracy and performance</li>
+              <li>Developed automation scripts to streamline data validation, transformation, and operational processes</li>
+              <li>Collaborated on technical and functional specifications, aligning data flows with business requirements</li>
             </ul>
           </div>
 
@@ -336,9 +339,10 @@ export default function Home() {
           <div>
             <h3 className="font-semibold">Earlier Experience — NTT Data / Wipro</h3>
             <ul className="mt-2 space-y-2">
-              <li>Worked on healthcare and financial systems</li>
-              <li>Handled integrations and compliance systems</li>
-              <li>Supported testing and automation workflows</li>
+              <li>Worked on enterprise systems across healthcare and financial domains, including claims and transaction platforms</li>
+              <li>Documented and refined system requirements (BRD, SRS) to support development and integration workflows</li>
+              <li>Handled integrations and compliance-driven application development within regulated enterprise systems</li>
+              <li>Supported testing, automation, and system validation for high-volume, business-critical platforms</li>
             </ul>
           </div>
         </div>
