@@ -6,6 +6,10 @@ backend/*.pyc
 *.pyc
 backend/data/*.txt
 !backend/data/*sample.txt
+backend/data/TruSicsample.txt
+backend/data/healthenginesample.txt
+backend/data/Ai_resume_rag.txt
+
 
 # -------- Frontend --------
 frontend/node_modules/

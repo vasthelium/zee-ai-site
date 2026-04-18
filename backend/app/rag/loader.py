@@ -6,6 +6,7 @@ def load_data():
     resume_path = os.path.join(base_dir, "data", "resume.txt")
     trusic_path = os.path.join(base_dir, "data", "trusic.txt")
     healthengine_path = os.path.join(base_dir, "data", "healthengine.txt")
+    airesumesite_path = os.path.join(base_dir, "data", "Ai_resume_rag.txt")
 
     corpus_data = []
 
@@ -25,5 +26,11 @@ def load_data():
             content_e = f.read()
             corpus_data.append({"source": "Health Engine", 
                         "content": content_e})
+            
+    if os.path.exists(airesumesite_path):
+        with open(airesumesite_path, "r") as f:
+            content_a = f.read()
+            corpus_data.append({"source": "Ai Resume Site", 
+                        "content": content_a})
 
     return corpus_data

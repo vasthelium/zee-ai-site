@@ -15,6 +15,7 @@ export default function Home() {
   const [jobDesc, setJobDesc] = useState("");
   const [matchResult, setMatchResult] = useState("");
   const [loadingMatch, setLoadingMatch] = useState(false);
+  const [loadingChat, setLoadingChat] = useState(false);
 
   useEffect(() => {
     if (chatRef.current) {
@@ -28,6 +29,7 @@ export default function Home() {
     const userInput = input;
     setMessages((prev) => [...prev, { role: "user", content: userInput }]);
     setInput("");
+    setLoadingChat(true);
 
     try {
       const res = await fetch("/api/chat", {
@@ -54,6 +56,7 @@ export default function Home() {
           return updated;
         });
       }
+      setLoadingChat(false);
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -116,28 +119,13 @@ export default function Home() {
         </p>
 
         {/* DIVIDER */}
-        <div className="mt-10 border-t pt-6" />
-
+        <div className="mt-8 border-t pt-3" />
         {/* SPLIT SECTION */}
-        <div className="grid grid-cols-1 md:grid-cols-10 gap-8 md:gap-12 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-10 gap-6 md:gap-8 mt-6">
 
-          {/* LEFT */}
-          <div className="md:col-span-7">
-            <h2 className="text-2xl font-semibold mb-4">Interests</h2>
-            <ul className="text-base space-y-2 text-zinc-700 dark:text-zinc-300">
-              <li>Focused on Python, applied ML/AI, and retrieval systems (RAG) for real-world product use</li>
-              <li>Systems-first thinker — I prefer understanding how things work over surface-level usage</li>
-              <li>Technical reading: Deep Learning (Goodfellow) and applied ML systems</li>
-              <li>Broader thinking: Max Tegmark, Richard Dawkins, Carl Sagan, Robert Sapolsky</li>
-              <li>Long-form thinking through podcasts like Acquired and other technology / business conversations</li>
-              <li>Naturally drawn to investigative thrillers, with a bias toward uncovering how things work</li>
-              <li>Learning through life as much as code, raising a teenage son</li>
-            </ul>
-          </div>
-
-          {/* RIGHT */}
-          <div className="md:col-span-3 mt-6 md:mt-2">
-            <h2 className="text-2xl font-semibold mb-4">Explore</h2>
+          {/* LEFT — now Explore */}
+          <div className="md:col-span-5">
+            <h2 className="text-2xl font-semibold mt-2 mb-4">Explore</h2>
 
             {/* JOB MATCHER */}
             <div className="mt-2">
@@ -149,7 +137,7 @@ export default function Home() {
               {!showMatcher && (
                 <button
                   onClick={() => setShowMatcher(true)}
-                  className="mt-2 mb-2 px-4 py-2 bg-black text-white rounded text-sm relative z-10"
+                  className="mt-2 mb-2 px-4 py-2 bg-black text-white dark:bg-white dark:text-black rounded text-sm relative z-10"
                 >
                   Try Job Matcher
                 </button>
@@ -159,7 +147,6 @@ export default function Home() {
                 <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
                   <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-lg w-[90vw] max-w-[500px] relative">
 
-                    {/* CLOSE BUTTON */}
                     <button
                       onClick={() => setShowMatcher(false)}
                       className="absolute top-3 right-3 text-zinc-500 hover:text-black"
@@ -178,7 +165,7 @@ export default function Home() {
 
                     <button
                       onClick={handleMatch}
-                      className="mt-3 px-4 py-2 bg-black text-white rounded text-sm">
+                      className="mt-3 px-4 py-2 bg-black text-white dark:bg-white dark:text-black rounded text-sm">
                       {loadingMatch ? "Generating..." : "Generate Match"}
                     </button>
 
@@ -193,7 +180,7 @@ export default function Home() {
               )}
             </div>
 
-            <div className="space-y-2 text-base">
+            <div className="space-y-4 text-base">
               <p>
                 <a href="https://github.com/vasthelium" className="underline" target="_blank" rel="noopener noreferrer">GitHub</a>
                 {" · "}
@@ -216,10 +203,24 @@ export default function Home() {
 
           </div>
 
+          {/* RIGHT — now Interests */}
+          <div className="md:col-span-5">
+            <h2 className="text-2xl font-semibold mt-2 mb-4">Interests</h2>
+            <ul className="text-base space-y-2 text-zinc-700 dark:text-zinc-300">
+              <li>Python · Applied ML · Retrieval Systems (RAG) · Agentic AI</li>
+              <li>Systems Thinking · First Principles · Pattern Recognition</li>
+              <li>ML/AI Depth · Systems, Product & Cloud Breadth</li>
+              <li>Tegmark · Dawkins · Sagan · Sapolsky</li>
+              <li>Acquired · Long-form Tech & Business Thinking</li>
+              <li>Investigative Thrillers · Curiosity Driven</li>
+              <li>Life Learning · Fatherhood · Cats 🐾</li>
+            </ul>
+          </div>
+
         </div>
 
         {/* PROJECTS */}
-        <div className="mt-16">
+        <div className="mt-12">
           <h2 className="text-2xl font-semibold mb-6">Projects / Research</h2>
 
           <div className="mb-10">
@@ -364,10 +365,10 @@ export default function Home() {
       </div>
 
       {/* CHAT — unchanged */}
-      {!showMatcher && (
+      {!showMatcher && !open && (
         <button
           onClick={() => setOpen(!open)}
-          className="fixed bottom-6 right-4 md:right-[calc((100vw-72rem)/2+1.5rem)] px-5 py-3 rounded-full bg-black text-white flex items-center gap-2 shadow-lg text-sm z-30"
+          className="fixed bottom-18 right-4 md:right-[calc((100vw-72rem)/2+1.5rem)] px-5 py-3 rounded-full bg-black text-white dark:bg-white dark:text-black flex items-center gap-2 shadow-lg text-sm z-30"
         >
           💬 <span className="font-medium">Ask ZeeAI</span>
         </button>
@@ -384,18 +385,29 @@ export default function Home() {
               ✕
             </button>
           </div>
+          {/* DISCLAIMER */}
+          <div className="px-3 pb-2 text-[11px] text-zinc-500">
+            *AI responses may be incomplete. Reach Zameer for more info..*
+          </div>
 
           <div ref={chatRef} className="flex-1 p-3 overflow-y-auto space-y-3 text-sm">
             {messages.map((msg, i) => (
               <div key={i} className={msg.role === "user" ? "text-right" : ""}>
                 <div className={`inline-block px-3 py-2 rounded-lg ${msg.role === "user"
-                  ? "bg-black text-white"
+                  ? "bg-black text-white dark:bg-white dark:text-black"
                   : "bg-zinc-200 dark:bg-zinc-700"
                   }`}>
                   {msg.content}
                 </div>
               </div>
             ))}
+            {loadingChat && (
+              <div>
+                <div className="inline-block px-3 py-2 rounded-lg bg-zinc-200 dark:bg-zinc-700 text-sm italic">
+                  Thinking...
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="p-3 flex gap-2 border-t">
@@ -406,13 +418,9 @@ export default function Home() {
               placeholder="Ask something..."
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
             />
-            <button onClick={handleSend} className="bg-black text-white px-3 rounded">
+            <button onClick={handleSend} className="bg-black text-white dark:bg-white dark:text-black px-3 rounded">
               Send
             </button>
-          </div>
-          {/* DISCLAIMER */}
-          <div className="px-3 pb-2 text-[11px] text-zinc-500">
-            *AI responses may be incomplete. Reach out to Zameer for more info..*
           </div>
         </div>
       )}

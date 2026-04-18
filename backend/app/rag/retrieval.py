@@ -5,6 +5,7 @@ from app.global_cache import load_to_memory
 import ast
 
 client = OpenAI()
+DEBUG = False
 
 def retrieve(user_input):
     """
@@ -47,8 +48,9 @@ def retrieve(user_input):
     neighbors.sort(key=lambda x: x["score"], reverse=True)
 
     # Debug (temporary)
-    for n in neighbors[:5]:
-        print(n["score"], n["content"][:60])
+    if DEBUG:
+        for n in neighbors[:5]:
+            print(n["score"], n["content"][:60])
 
     # --- Step 5: Return top results ---
     return neighbors[:5]
