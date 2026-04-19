@@ -191,7 +191,7 @@ export default function Home() {
 
               <p>
                 <a
-                  href="https://syedzameer-ai-data.s3.us-east-1.amazonaws.com/SyedZameer_Resume_Y2026.pdf"
+                  href="https://syedzameer-ai-data.s3.us-east-1.amazonaws.com/SyedZameer_Resume_Y26.pdf"
                   className="underline"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -227,7 +227,7 @@ export default function Home() {
             <h3 className="font-semibold mb-2">TruSic</h3>
 
             <p className="text-sm mt-1 mb-3">
-              <a href="#" className="underline">System Diagram</a> ·{" "}
+              <a href="https://syedzameer-ai-data.s3.us-east-1.amazonaws.com/TruSic.svg" className="underline">System Diagram</a> ·{" "}
               <a href="https://github.com/vasthelium/TruSic" className="underline">GitHub</a>
             </p>
             <ul className="text-base space-y-2">
@@ -242,7 +242,7 @@ export default function Home() {
             <h3 className="font-semibold mb-2">AI Resume Site</h3>
 
             <p className="text-sm mt-1 mb-3">
-              <a href="#" className="underline">System Diagram</a> ·{" "}
+              <a href="https://syedzameer-ai-data.s3.us-east-1.amazonaws.com/AI_ResumeSite.svg" className="underline">System Diagram</a> ·{" "}
               <a href="https://github.com/vasthelium/zee-ai-site" className="underline">GitHub</a>
             </p>
             <ul className="text-base space-y-2">
@@ -255,10 +255,6 @@ export default function Home() {
           <div className="mb-10">
             <h3 className="font-semibold mb-2">Health Engine</h3>
 
-            <p className="text-sm mt-1 mb-3">
-              <a href="#" className="underline">System Diagram</a> ·{" "}
-              <a href="https://github.com/vasthelium/unnamedengine" className="underline">GitHub</a>
-            </p>
             <ul className="text-base space-y-2">
               <li>A personal health intelligence system that translates physiological data into adaptive daily guidance</li>
               <li>Ingests wearable data, normalizes signals, applies rule-based and LLM-driven reasoning</li>
