@@ -99,7 +99,7 @@ export default function Home() {
         <h1 className="text-5xl font-semibold">Syed Zameer M</h1>
 
         <p className="mt-3 text-xl font-bold text-zinc-800 dark:text-zinc-200">
-          +1 972.441.2534 · techiezameer.m@gmail.com
+          techiezameer.m@gmail.com
         </p>
 
         <p className="mt-6 text-xl leading-8 text-zinc-700 dark:text-zinc-300 max-w-5xl">
