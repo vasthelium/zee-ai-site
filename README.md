@@ -1,4 +1,4 @@
-# Zee AI Site
+# AI Resume Builder
 AI-powered portfolio that lets users query, evaluate, and interact with my work instead of reading a static resume.
 
 ## 🔗 Live Demo
