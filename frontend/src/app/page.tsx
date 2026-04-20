@@ -358,8 +358,11 @@ export default function Home() {
           </ul>
         </div>
         {/* FOOTER */}
-        <div className="mt-16 pt-6 border-t text-center text-xs text-zinc-500">
-          © 2026 Syed Zameer — Personal AI Portfolio
+        <div className="mt-16 pt-6 border-t text-xs text-zinc-500">
+          <p>© 2026 Syed Zameer — Personal AI Portfolio</p>
+          <p className="mt-1">
+            Built with Next.js, FastAPI, and Retrieval-Augmented Generation (RAG)
+          </p>
         </div>
 
       </div>
