@@ -357,6 +357,10 @@ export default function Home() {
             <li>CKAD (In Progress), Docker</li>
           </ul>
         </div>
+        {/* FOOTER */}
+        <div className="mt-16 pt-6 border-t text-center text-xs text-zinc-500">
+          © 2026 Syed Zameer — Personal AI Portfolio
+        </div>
 
       </div>
 
