@@ -1,6 +1,7 @@
 from app.rag.loader import load_data
 from app.rag.chunker import chunking
 from openai import OpenAI
+from app.services.configs import CONFIG_CACHE
 
 """
 approach 1 tested works : 
@@ -32,7 +33,7 @@ def embed():
         text_to_embed.append(items["content"]
         )
     
-    client = OpenAI()
+    client = OpenAI(api_key=CONFIG_CACHE["OPENAI_API_KEY"])
     embedding = client.embeddings.create(
         model="text-embedding-3-small",
         input=text_to_embed
