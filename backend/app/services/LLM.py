@@ -1,5 +1,5 @@
 from openai import OpenAI
-from app.services.configs import CONFIG_CACHE
+import app.services.configs as config
 
 def sendtollm(user_input, neighbors):
 
@@ -65,7 +65,7 @@ User Question:
 Answer:
 """
     
-    client = OpenAI(api_key=CONFIG_CACHE["OPENAI_API_KEY"])
+    client = OpenAI(api_key=config.CONFIG_CACHE["OPENAI_API_KEY"])
     response = client.responses.create(
     model="gpt-4.1-mini",
     input=prompt  
@@ -138,7 +138,7 @@ Job Description:
 Evaluation:
 """
     
-    client = OpenAI(api_key=CONFIG_CACHE["OPENAI_API_KEY"])
+    client = OpenAI(api_key=config.CONFIG_CACHE["OPENAI_API_KEY"])
     response = client.responses.create(
     model="gpt-4.1-mini",
     input=prompt  
