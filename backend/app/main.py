@@ -6,13 +6,13 @@ from app.global_cache import load_to_memory
 from app.services.match_service import matchservice
 from app.services.configs import loadconfig_tomemory
 from app.services.db_repository import init_dbpool
-from app.services.configs import CONFIG_CACHE
+import app.services.configs as config
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     #startup
     loadconfig_tomemory()
-    init_dbpool(CONFIG_CACHE["DATABASE_URL"])
+    init_dbpool(config.CONFIG_CACHE["DATABASE_URL"])
     load_to_memory()
     #shutdown
     yield
