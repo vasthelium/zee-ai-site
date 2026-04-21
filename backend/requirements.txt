@@ -3,4 +3,6 @@ uvicorn
 openai
 psycopg2-binary
 numpy
+boto3
+
 
