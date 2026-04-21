@@ -1,13 +1,14 @@
-import os 
 import psycopg2
 from psycopg2 import pool
 from textwrap import dedent
 
-dsn = os.getenv("DATABASE_URL")
-if not dsn:
-    raise ValueError("DB URL not set in this terminal")
-connection_pool = pool.SimpleConnectionPool(1, 10, dsn)
 
+connection_pool = None
+
+def init_dbpool(DATABASE_URL):
+    global connection_pool
+    connection_pool = pool.SimpleConnectionPool(1, 10, DATABASE_URL)
+    
 def pgconnect():
     return connection_pool.getconn()
 
