@@ -2,7 +2,7 @@ from openai import OpenAI
 import numpy as np
 import app.global_cache as gc
 from app.global_cache import load_to_memory
-from app.services.configs import CONFIG_CACHE
+import app.services.configs as config
 import ast
 
 
@@ -13,7 +13,7 @@ def retrieve(user_input):
     Retrieve top relevant chunks using embedding similarity.
     """
     # --- Step 1: Convert user query to embedding ---
-    client = OpenAI(api_key=CONFIG_CACHE["OPENAI_API_KEY"])
+    client = OpenAI(api_key=config.CONFIG_CACHE["OPENAI_API_KEY"])
     embedding_convert = client.embeddings.create(
         model="text-embedding-3-small",
         input=user_input
