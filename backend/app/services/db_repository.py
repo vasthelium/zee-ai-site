@@ -2,7 +2,6 @@ import psycopg2
 from psycopg2 import pool
 from textwrap import dedent
 
-
 connection_pool = None
 
 def init_dbpool(DATABASE_URL):

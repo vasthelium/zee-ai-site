@@ -191,7 +191,7 @@ export default function Home() {
 
               <p>
                 <a
-                  href="https://syedzameer-ai-data.s3.us-east-1.amazonaws.com/SyedZameer_Resume_Y26.pdf"
+                  href="https://syedzameer-ai-data.s3.us-east-1.amazonaws.com/SyedZameer_Resume_26Y.pdf"
                   className="underline"
                   target="_blank"
                   rel="noopener noreferrer"
