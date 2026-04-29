@@ -11,6 +11,12 @@ export async function POST(req: Request) {
         body: JSON.stringify({ job_description }),
     });
 
+    if (!response.ok) {
+        const text = await response.text();
+        console.error("Backend error:", text);
+        return NextResponse.json({ error: text }, { status: 500 });
+    }
+
     const data = await response.json();
 
     return NextResponse.json(data);
