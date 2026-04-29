@@ -191,7 +191,7 @@ export default function Home() {
 
               <p>
                 <a
-                  href="https://syedzameer-ai-data.s3.us-east-1.amazonaws.com/SyedZameer_Resume_26Y.pdf"
+                  href="https://syedzameer-ai-data.s3.us-east-1.amazonaws.com/SyedZameer_Resume_2026Y.pdf"
                   className="underline"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -270,7 +270,7 @@ export default function Home() {
 
           {/* Yum */}
           <div className="mb-8">
-            <h3 className="font-semibold">Yum Brands — Product Technical Engineer</h3>
+            <h3 className="font-semibold">Yum Brands — Sr Product Manager (Technical)</h3>
             <p className="text-sm text-zinc-500">Apr 2023 - Present</p>
             <ul className="mt-2 space-y-2">
               <li>Building AI-driven predictive search and suggestion systems within menu hub enabling contextual reuse of existing configurations</li>
@@ -284,7 +284,7 @@ export default function Home() {
 
           {/* PACCAR */}
           <div className="mb-8">
-            <h3 className="font-semibold">PACCAR — Technical Product Analyst</h3>
+            <h3 className="font-semibold">PACCAR — Technical Product Manager</h3>
             <p className="text-sm text-zinc-500">Oct 2023 – Apr 2024</p>
             <ul className="mt-2 space-y-2">
               <li>Contributed to PACCGPT, an internal AI-driven enterprise knowledge interface, supporting early-stage development and integration design</li>
@@ -297,7 +297,7 @@ export default function Home() {
 
           {/* Toyota */}
           <div className="mb-8">
-            <h3 className="font-semibold">Toyota — Technical Product Owner / Analyst</h3>
+            <h3 className="font-semibold">Toyota — Technical Product Lead</h3>
             <p className="text-sm text-zinc-500">Sep 2021 – Jul 2023</p>
             <ul className="mt-2 space-y-2">
               <li>Led API mapping and end-to-end data flow analysis across legacy and cloud-native systems during AWS migration</li>
@@ -309,7 +309,7 @@ export default function Home() {
 
           {/* United */}
           <div className="mb-8">
-            <h3 className="font-semibold">United Airlines — Technical Analyst</h3>
+            <h3 className="font-semibold">United Airlines — Technical Analyst (Product & Delivery)</h3>
             <p className="text-sm text-zinc-500">Feb 2020 – Sep 2021</p>
             <ul className="mt-2 space-y-2">
               <li>Supported end-to-end development of customer-facing mobile applications, from requirements through production deployment</li>
